@@ -15,7 +15,7 @@ const projects = [
             "Talk-in is a real-time chat application enabling seamless user communication with features like JWT-based authentication, persistent messaging.",
         category: "Web Application",
         technologies: ["Socket.IO", "React", "Redux Toolkit", "Node.js", "Express", "MongoDB", "JWT"],
-        image: "https://via.placeholder.com/300", // Replace with your project image
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLOIGQJTbpFsH_LynF9N6j3xYpn5b6k2mcGw&s", // Replace with your project image
         link: "https://github.com/Abhinavchawda/talk-in",
         colors: {
             primary: "rgba(23, 23, 74, 0.85)",
@@ -30,7 +30,7 @@ const projects = [
             "A comprehensive e-commerce platform featuring advanced search, dynamic filtering, product management by admin, and responsive design. Optimized for scalability and performance.",
         category: "Web Application",
         technologies: ["React", "Redux Toolkit", "Node.js", "Express", "MongoDB", "Cookies"],
-        image: "https://via.placeholder.com/300",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLOIGQJTbpFsH_LynF9N6j3xYpn5b6k2mcGw&s",
         link: "https://shop-in-chi.vercel.app/",
         colors: {
             primary: "rgba(74, 59, 23, 0.95)",
@@ -45,7 +45,7 @@ const projects = [
             "Developed for ISTE Version Beta Hackathon'24, Nirvana is a mental wellness app offering interactive content, journaling tools, meditation and breathing sessions, mindful games and real-time group discussions using WebSocket technologies.",
         category: "Hackathon Project",
         technologies: ["React", "Redux Toolkit", "Node.js", "Express", "MongoDB", "Socket.IO"],
-        image: "https://via.placeholder.com/300",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLOIGQJTbpFsH_LynF9N6j3xYpn5b6k2mcGw&s",
         link: "https://github.com/Abhinavchawda/beta_15_ps_2",
         colors: {
             primary: "rgba(74, 23, 23, 0.85)",
@@ -60,7 +60,7 @@ const projects = [
             "A minimalistic, yet powerful to-do list application for task management with real-time updates, drag-and-drop sorting, and persistent storage.",
         category: "Web Application",
         technologies: ["React", "Redux", "Node.js", "Express", "MongoDB"],
-        image: "https://via.placeholder.com/300",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLOIGQJTbpFsH_LynF9N6j3xYpn5b6k2mcGw&s",
         link: "https://github.com/Abhinavchawda/my-todo/",
         colors: {
             primary: "rgba(23, 74, 59, 0.85)",
