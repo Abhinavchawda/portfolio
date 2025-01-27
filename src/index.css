@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Optional: Define heading and body font weights */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600; /* Semi-bold for headings */
+  }
+  
+  p, a, li, span {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400; /* Regular for body text */
+  }
+  
+  /* Example of applying specific weights */
+  button {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500; /* Medium weight for buttons */
+  }
+  
