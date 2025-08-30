@@ -1,77 +1,153 @@
-import { use, useEffect } from "react";
-import AOS from "aos";  
-import "aos/dist/aos.css"; 
+import { useEffect } from "react";
+import { motion } from "framer-motion";
+import { FaGraduationCap, FaSchool, FaUniversity } from "react-icons/fa";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const EducationData = [
   {
-    year: '2018 - 2019',
-    degree: 'Class 10th', class: 'Class 10th', subject: 'High School Certificate Examination', institute: 'Govt. H. S. Excellence School', location: 'Ujjain, Madhya Pradesh, India', result_name: 'Score', result: '94.60 %'
+    year: '2022 - 2026',
+    icon: <FaUniversity className="text-4xl text-cyan-400" />,
+    degree: 'Bachelor of Technology',
+    class: 'Computer Science & Engineering',
+    institute: 'Maulana Azad National Institute of Technology',
+    location: 'Bhopal, Madhya Pradesh, India',
+    result: '9.27 CGPA',
+    highlights: [
+      'Specializing in Computer Science & Engineering',
+      'Vice President of Evole Technical Club',
+      'Active participant in technical events and hackathons'
+    ]
   },
   {
     year: '2020 - 2021',
-    degree: 'Class 12th', class: 'Class 12th', subject: 'Physics, Chemistry, Mathematics', institute: 'Govt. H. S. Excellence School', location: 'Ujjain, Madhya Pradesh, India', result_name: 'Score', result: '95.20 %'
+    icon: <FaGraduationCap className="text-4xl text-blue-400" />,
+    degree: 'Class 12th',
+    institute: 'Govt. H. S. Excellence School',
+    location: 'Ujjain, Madhya Pradesh, India',
+    result: '95.20 %',
+    highlights: [
+      'Physics, Chemistry, Mathematics',
+      'Active participation in science exhibitions'
+    ]
   },
   {
-    year: '2022 - 2026', degree: 'Graduation', class: 'Bachelor of Technology', subject: 'Computer Science & Engineering', institute: 'Maulana Azad National Institute of Technology', location: 'Bhopal, Madhya Pradesh, India', result_name: 'Score', result: '9.46 CGPA'
+    year: '2018 - 2019',
+    icon: <FaSchool className="text-4xl text-purple-400" />,
+    degree: 'Class 10th',
+    institute: 'Govt. H. S. Excellence School',
+    location: 'Ujjain, Madhya Pradesh, India',
+    result: '94.60 %',
+    highlights: [
+      '99 marks in Mathematics',
+      'NCC A certificate'
+    ]
   }
 ];
 
-export default function Education() {
-  useEffect(() => {   
-    AOS.init({ duration: 500 }); // Initialize AOS
+const EducationCard = ({ data, index }) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: index * 0.2 }}
+      className="relative w-full md:w-[80%] lg:w-full backdrop-blur-sm"
+    >
+      <div className="relative p-6 bg-gray-800/50 rounded-xl border border-gray-700 hover:border-cyan-500 transition-all duration-300 group">
+        {/* Year Badge */}
+        <div className="absolute -top-4 left-6 bg-gradient-to-r from-cyan-500 to-blue-500 text-white px-4 py-1 rounded-full text-sm font-medium">
+          {data.year}
+        </div>
+
+        <div className="mt-4 space-y-6">
+          {/* Header */}
+          <div className="flex items-start gap-4">
+            <div className="p-3 bg-gray-700/50 rounded-lg group-hover:bg-gray-700 transition-colors">
+              {data.icon}
+            </div>
+            <div>
+              <h3 className="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">
+                {data.degree}
+              </h3>
+              <p className="text-gray-400">{data.class}</p>
+            </div>
+          </div>
+
+          {/* Institute Info */}
+          <div className="space-y-2">
+            <h4 className="text-lg font-semibold text-gray-300">{data.institute}</h4>
+            <p className="text-gray-400">{data.location}</p>
+          </div>
+
+          {/* Result Badge */}
+          <div className="inline-block bg-gray-700/50 text-cyan-400 px-4 py-2 rounded-lg font-medium">
+            Score: {data.result}
+          </div>
+
+          {/* Highlights */}
+          <div className="space-y-2">
+            <h5 className="text-sm font-medium text-gray-400">Highlights:</h5>
+            <ul className="space-y-1">
+              {data.highlights.map((highlight, idx) => (
+                <li key={idx} className="text-gray-300 text-sm flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 bg-cyan-400 rounded-full"></span>
+                  {highlight}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
+const Education = () => {
+  useEffect(() => {
+    AOS.init({ duration: 800 });
   }, []);
 
   return (
-    <div id="education" className="pt-12 md:pt-24 min-h-screen">
-      <div data-aos="fade-down" className='flex justify-center items-center text-5xl font-bold text-white'>Education</div>
+    <section id="education" className="py-20 px-6 bg-gradient-to-br from-gray-900 via-black to-gray-800">
+      <div className="max-w-6xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl font-bold">
+            <span className="bg-gradient-to-r from-cyan-400 to-blue-500 text-transparent bg-clip-text">
+              Education Journey
+            </span>
+          </h2>
+          <p className="mt-4 text-gray-400 max-w-2xl mx-auto">
+            My academic path has been marked by consistent excellence and a passion for technology and innovation.
+          </p>
+        </motion.div>
 
-      <div className='flex flex-wrap gap-10 justify-center px-6 md:px-16 my-16'>
-        {EducationData &&
-          EducationData.map((data, index) => (
-            <div data-aos="zoom-in-up" key={index} className="w-[90%] md:w-[50%] lg:w-[30%] mx-auto my-0 md:my-8 scale-[0.97] hover:scale-100 transition-transform duration-300 pb-2 min-h-[30vh] lg:min-h-[35vh] rounded-2xl shadow-lg bg-gradient-to-b from-gray-100 to-gray-200">
-              {/* Year and Degree */}
-              <div className="flex justify-between items-center py-4 px-6 border-b border-gray-300">
-                <div className="bg-black text-yellow-500 text-xs md:text-sm font-bold py-2 px-4 rounded-lg">
-                  {data.year}
-                </div>
-                <div className="bg-gray-300 text-black text-xs md:text-sm font-bold py-2 px-4 rounded-lg">
-                  {data.degree}
-                </div>
-              </div>
+        {/* Timeline */}
+        <div className="relative">
+          {/* Timeline Line */}
+          <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-1 h-full bg-gradient-to-b from-cyan-500 via-blue-500 to-purple-500 rounded-full"></div>
 
-              {/* Class and Subject */}
-              <div className="px-6 py-4 space-y-2">
-                <div className="text-lg md:text-xl font-semibold text-gray-800">
-                  {data.class}
+          {/* Education Cards */}
+          <div className="space-y-12">
+            {EducationData.map((data, index) => (
+              <div key={index} className={`relative flex ${
+                index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
+              } items-center justify-center gap-8`}>
+                <div className="w-full md:w-1/2 flex justify-end">
+                  <EducationCard data={data} index={index} />
                 </div>
-                <div className="text-base md:text-lg font-medium text-gray-600">
-                  {data.subject}
-                </div>
+                {/* Timeline Node */}
+                <div className="absolute left-0 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-cyan-400 rounded-full border-4 border-gray-900"></div>
               </div>
-
-              {/* Institute and Location */}
-              <div className="px-6 py-4 space-y-1">
-                <div className="text-sm md:text-base font-medium text-gray-700">
-                  {data.institute}
-                </div>
-                <div className="text-sm md:text-base font-medium text-gray-500">
-                  {data.location}
-                </div>
-              </div>
-
-              {/* Result */}
-              <div className="flex gap-3 px-6 py-4">
-                <div className="bg-gray-400 text-black text-xs md:text-sm font-bold py-1 px-3 rounded-full">
-                  {data.result_name}
-                </div>
-                <div className="bg-gray-400 text-black text-xs md:text-sm font-bold py-1 px-3 rounded-full">
-                  {data.result}
-                </div>
-              </div>
-            </div>
-          ))
-        }
+            ))}
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
+
+export default Education;

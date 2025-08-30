@@ -1,169 +1,225 @@
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Navigation, Pagination } from 'swiper/modules';
-import { useEffect } from 'react';
-
-import AOS from "aos"; 
-import "aos/dist/aos.css"; 
+import { useState, useEffect } from 'react';
+import { FaGithub, FaExternalLinkAlt, FaStar } from 'react-icons/fa';
+import { motion, AnimatePresence } from 'framer-motion';
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const projects = [
     {
-        name: "Talk-in: A Real-Time Chat Application",
-        description:
-            "Talk-in is a real-time chat application enabling seamless user communication with features like JWT-based authentication, persistent messaging.",
-        category: "Web Application",
-        technologies: ["Socket.IO", "React", "Redux Toolkit", "Node.js", "Express", "MongoDB", "JWT"],
-        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLOIGQJTbpFsH_LynF9N6j3xYpn5b6k2mcGw&s", // Replace with your project image
-        link: "https://github.com/Abhinavchawda/talk-in",
-        colors: {
-            primary: "rgba(23, 23, 74, 0.85)",
-            secondary: "rgba(86, 86, 252, 0.85)",
-            category: "rgba(51, 51, 123, 0.7)",
-            button: "rgba(51, 51, 123, 0.7)",
-        },
+        name: "ArthoScan",
+        description: "A deep learning platform revolutionizing arthritis diagnosis through knee X-ray analysis. Features AI-generated diagnostic reports, progression tracking, and comprehensive patient history management.",
+        category: "AI/ML",
+        date: "March 2025",
+        technologies: ["React", "Tailwind", "FastAPI", "PyTorch", "Google Gemini"],
+        features: [
+            "AI-powered diagnostic reports",
+            "User history tracking",
+            "Scan comparison for progression monitoring",
+            "Machine learning model with 95% accuracy"
+        ],
+        image: "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg",
+        github: "https://github.com/pecee06/manitXthapar_hackathon",
+        demo: "https://github.com/pecee06/manitXthapar_hackathon",
+        featured: true
     },
     {
-        name: "Shop-in: Full-Stack E-Commerce Website",
-        description:
-            "A comprehensive e-commerce platform featuring advanced search, dynamic filtering, product management by admin, and responsive design. Optimized for scalability and performance.",
-        category: "Web Application",
-        technologies: ["React", "Redux Toolkit", "Node.js", "Express", "MongoDB", "Cookies"],
-        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLOIGQJTbpFsH_LynF9N6j3xYpn5b6k2mcGw&s",
-        link: "https://shop-in-chi.vercel.app/",
-        colors: {
-            primary: "rgba(74, 59, 23, 0.95)",
-            secondary: "rgba(252, 202, 86, 0.85)",
-            category: "rgba(123, 101, 51, 0.8)",
-            button: "rgba(123, 101, 51, 0.9)",
-        },
+        name: "Talk-in",
+        description: "Advanced real-time chat application with AI-powered chatbot integration. Features modern UI, real-time messaging, and secure authentication.",
+        category: "Full Stack",
+        date: "November 2024",
+        technologies: ["React", "Express", "Tailwind", "MongoDB", "Socket.io", "Google Gemini"],
+        features: [
+            "Real-time messaging with Socket.io",
+            "AI chatbot integration",
+            "JWT-based authentication",
+        ],
+        image: "https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg",
+        github: "https://github.com/Abhinavchawda/talk-in",
+        demo: "https://github.com/Abhinavchawda/talk-in",
+        featured: true
     },
     {
-        name: "Nirvana: Mental Wellness Platform",
-        description:
-            "Developed for ISTE Version Beta Hackathon'24, Nirvana is a mental wellness app offering interactive content, journaling tools, meditation and breathing sessions, mindful games and real-time group discussions using WebSocket technologies.",
-        category: "Hackathon Project",
-        technologies: ["React", "Redux Toolkit", "Node.js", "Express", "MongoDB", "Socket.IO"],
-        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLOIGQJTbpFsH_LynF9N6j3xYpn5b6k2mcGw&s",
-        link: "https://github.com/Abhinavchawda/beta_15_ps_2",
-        colors: {
-            primary: "rgba(74, 23, 23, 0.85)",
-            secondary: "rgba(252, 86, 86, 0.85)",
-            category: "rgba(123, 51, 51, 0.7)",
-            button: "rgba(123, 51, 51, 0.7)",
-        },
-    },
-    {
-        name: "My-Todo: Productivity Management App",
-        description:
-            "A minimalistic, yet powerful to-do list application for task management with real-time updates, drag-and-drop sorting, and persistent storage.",
-        category: "Web Application",
-        technologies: ["React", "Redux", "Node.js", "Express", "MongoDB"],
-        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLOIGQJTbpFsH_LynF9N6j3xYpn5b6k2mcGw&s",
-        link: "https://github.com/Abhinavchawda/my-todo/",
-        colors: {
-            primary: "rgba(23, 74, 59, 0.85)",
-            secondary: "rgba(86, 252, 202, 0.85)",
-            category: "rgba(51, 123, 101, 0.7)",
-            button: "rgba(51, 123, 101, 0.7)",
-        },
-    },
+        name: "Shop-in",
+        description: "Full-featured E-commerce platform with comprehensive admin dashboard, product management, and secure payment integration.",
+        category: "Full Stack",
+        date: "May 2024",
+        technologies: ["MongoDB", "Express", "React", "Node.js", "Tailwind"],
+        features: [
+            "Advanced search & filtering",
+            "Secure user authentication",
+            "Shopping cart & checkout",
+            "Admin dashboard with analytics"
+        ],
+        image: "https://cdn.worldvectorlogo.com/logos/shopify.svg",
+        github: "https://github.com/Abhinavchawda/shop-in",
+        demo: "https://shop-in-chi.vercel.app",
+        featured: true
+    }
 ];
 
-export default function ProjectSlider() {
+const ProjectCard = ({ project }) => {
+    return (
+        <motion.div
+            layout
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl overflow-hidden shadow-xl border-2 border-cyan-500/30 hover:border-cyan-400 transition-all duration-300 hover:-translate-y-2"
+        >
+            {/* Project Image */}
+            <div className="relative h-48 overflow-hidden group">
+                <div className="absolute inset-0 bg-gradient-to-br from-gray-900/10 to-gray-900/50 z-10" />
+                <img 
+                    src={project.image || "https://via.placeholder.com/400x200"} 
+                    alt={project.name}
+                    className="w-full h-full object-contain p-8 transition-transform duration-300 group-hover:scale-105"
+                />
+                <div className="absolute top-4 right-4 z-20">
+                    {project.featured && (
+                        <span className="bg-cyan-500 text-white text-xs px-2 py-1 rounded-full flex items-center animate-pulse">
+                            <FaStar className="mr-1" /> Featured
+                        </span>
+                    )}
+                </div>
+            </div>
+
+            {/* Project Content */}
+            <div className="p-6 space-y-4">
+                <div className="flex justify-between items-start">
+                    <h3 className="text-xl font-bold text-white">{project.name}</h3>
+                    <span className="text-sm text-gray-400">{project.date}</span>
+                </div>
+
+                <p className="text-gray-300 text-sm line-clamp-3">
+                    {project.description}
+                </p>
+
+                {/* Features */}
+                <div className="space-y-2">
+                    <h4 className="text-sm font-semibold text-cyan-400">Key Features:</h4>
+                    <ul className="text-sm text-gray-300 space-y-1 list-disc list-inside">
+                        {project.features.slice(0, 3).map((feature, index) => (
+                            <li key={index}>{feature}</li>
+                        ))}
+                    </ul>
+                </div>
+
+                {/* Tech Stack */}
+                <div className="flex flex-wrap gap-2 mt-2">
+                    {project.technologies.map((tech, index) => (
+                        <span
+                            key={index}
+                            className="text-xs px-3 py-1 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold rounded-full shadow"
+                        >
+                            {tech}
+                        </span>
+                    ))}
+                </div>
+
+                {/* Links */}
+                <div className="flex justify-end space-x-4 pt-4">
+                    <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-cyan-400 hover:text-white transition-colors flex items-center font-semibold"
+                    >
+                        <FaGithub className="mr-2" />
+                        Code
+                    </a>
+                    <a
+                        href={project.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-cyan-400 hover:text-white transition-colors flex items-center font-semibold"
+                    >
+                        <FaExternalLinkAlt className="mr-2" />
+                        Demo
+                    </a>
+                </div>
+            </div>
+        </motion.div>
+    );
+};
+
+const ProjectFilters = ({ currentFilter, onFilterChange }) => {
+    const filters = ["All", "AI/ML", "Full Stack"];
+    
+    return (
+        <div className="flex flex-wrap justify-center gap-4 mb-12">
+            {filters.map((filter) => (
+                <button
+                    key={filter}
+                    onClick={() => onFilterChange(filter)}
+                    className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                        currentFilter === filter
+                            ? "bg-cyan-500 text-white"
+                            : "bg-gray-800 text-gray-300 hover:bg-gray-700"
+                    }`}
+                >
+                    {filter}
+                </button>
+            ))}
+        </div>
+    );
+};
+
+export default function Projects() {
+    const [filter, setFilter] = useState("All");
+    
     useEffect(() => {   
-        AOS.init({ duration: 500 }); // Initialize AOS
+        AOS.init({ duration: 500 });
     }, []);
 
+    const filteredProjects = projects.filter(project => 
+        filter === "All" ? true : project.category === filter
+    );
+
     return (
-        <div id='projects' className="py-12 mb-24 md:pt-24 lg:min-h-screen">
-            <h2 data-aos="fade-down" className="flex justify-center items-center text-5xl font-bold text-white">Projects</h2>
-            <div className='mt-16'>
-                <Swiper
-                    spaceBetween={50}
-                    slidesPerView={1}
-                    loop={true}
-                    autoplay={{
-                        delay: 2500,
-                        disableOnInteraction: true, // This ensures autoplay continues after interacting with the slider
-                    }}
-                    // navigation={true}
-                    pagination={{
-                        clickable: true,
-                    }}
-                    modules={[Navigation, Autoplay, Pagination]} // Add modules to Swiper for functionality
-                    className="w-[90%] mx-auto"
+        <section id="projects" className="py-20 px-6 bg-gradient-to-br from-gray-900 via-black to-gray-800">
+            <div className="max-w-6xl mx-auto">
+                <div className="text-center space-y-4 mb-16">
+                    <motion.h2 
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="text-4xl md:text-5xl font-bold"
+                    >
+                        <span className="bg-gradient-to-r from-cyan-400 to-blue-500 text-transparent bg-clip-text">
+                            Featured Projects
+                        </span>
+                    </motion.h2>
+                    <motion.p 
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.2 }}
+                        className="text-gray-400 max-w-2xl mx-auto"
+                    >
+                        Explore my latest works showcasing a blend of innovation, technical expertise, and creative problem-solving.
+                    </motion.p>
+                </div>
+
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3 }}
                 >
-                    {projects.map((project, index) => (
-                        <SwiperSlide key={index}>
-                            <div
-                                className={`project flex flex-col md:flex-row items-center gap-6 p-6 text-white mx-auto mt-10 w-[90%] lg:w-[70%] rounded-3xl shadow-lg`}
-                                style={{
-                                    background: `linear-gradient(135deg, ${project.colors.primary} 30%, ${project.colors.secondary} 100%)`,
-                                }}
-                            >
-                                {/* Project Image */}
-                                <div
-                                    className="image rounded-3xl h-[200px] md:h-[300px] w-full md:w-[40%] bg-cover bg-center"
-                                    style={{ backgroundImage: `url(${project.image})` }}
-                                ></div>
+                    <ProjectFilters currentFilter={filter} onFilterChange={setFilter} />
+                </motion.div>
 
-                                {/* Project Content */}
-                                <div className="content flex flex-col justify-between gap-4 w-full">
-                                    {/* Project Name */}
-                                    <h3 className="font-bold text-2xl text-white">{project.name}</h3>
-
-                                    {/* Project Description */}
-                                    <p className="text-gray-100 text-sm md:text-base">{project.description}</p>
-
-                                    {/* Category */}
-                                    <div className="text-gray-200 text-sm">
-                                        <span
-                                            className="inline-block px-3 py-1"
-                                            style={{
-                                                background: `${project.colors.category}`,
-                                                color: "white",
-                                                borderRadius: "9999px",
-                                            }}
-                                        >
-                                            {project.category}
-                                        </span>
-                                    </div>
-
-                                    {/* Technologies Used */}
-                                    <div className="flex flex-wrap gap-2 mt-2">
-                                        {project.technologies.map((tech, index) => (
-                                            <span
-                                                key={index}
-                                                className="bg-white text-black px-4 py-1 rounded-3xl text-sm font-semibold"
-                                            >
-                                                {tech}
-                                            </span>
-                                        ))}
-                                    </div>
-
-                                    {/* View Project Button */}
-                                    <div>
-                                        <a
-                                            href={project.link}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="inline-block text-white font-semibold text-center px-5 py-2 rounded-3xl border border-white transition duration-300"
-                                            style={{
-                                                background: `${project.colors.button}`,
-                                                borderColor: "white",
-                                            }}
-                                        >
-                                            View Project
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </SwiperSlide>
-                    ))}
-                </Swiper>
+                <AnimatePresence mode="wait">
+                    <motion.div 
+                        layout
+                        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                    >
+                        {filteredProjects.map((project, index) => (
+                            <ProjectCard 
+                                key={project.name} 
+                                project={project}
+                            />
+                        ))}
+                    </motion.div>
+                </AnimatePresence>
             </div>
-        </div>
+        </section>
     );
 };
